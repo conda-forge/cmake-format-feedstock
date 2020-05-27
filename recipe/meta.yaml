@@ -1,5 +1,5 @@
 {% set name = "cmake-format" %}
-{% set version = "0.6.9" %}
+{% set version = "0.6.10" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/cheshirekow/cmake_format/releases/download/v{{ version }}/cmake_format-{{ version }}.tar.gz
-  sha256: b2f8bf2e9c6651126f2f2954b7803222b0faf6b8649eabc4d965ea97483a4d20
+  sha256: 82f0ef16236225cb43f45bfb6983ef7f6f72634727a1a6c26290402527bdd793
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - cmake-annotate = cmake_format.annotate:main
     - cmake-format = cmake_format.__main__:main
@@ -46,7 +46,7 @@ about:
   license: GPL-3.0
   license_family: GPL
   license_file: LICENSE.txt
-  summary: 'Source code formatter for cmake listfiles'
+  summary: Source code formatter for cmake listfiles
 
   description: |
     The cmake-format project provides Quality Assurance (QA) tools for cmake.
