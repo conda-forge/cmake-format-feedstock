@@ -3,9 +3,9 @@ About cmake-format
 
 Home: https://github.com/cheshirekow/cmake_format
 
-Package license: GPL-3.0
+Package license: GPL-3.0-only
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Source code formatter for cmake listfiles
 
@@ -124,4 +124,5 @@ Feedstock Maintainers
 =====================
 
 * [@avrahamshukron](https://github.com/avrahamshukron/)
+* [@xhochy](https://github.com/xhochy/)
 
