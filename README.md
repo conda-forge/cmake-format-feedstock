@@ -5,7 +5,7 @@ Home: https://github.com/cheshirekow/cmake_format
 
 Package license: GPL-3.0
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Source code formatter for cmake listfiles
 
