@@ -43,7 +43,7 @@ test:
 
 about:
   home: https://github.com/cheshirekow/cmake_format
-  license: GPL-3.0
+  license: GPL-3.0-only
   license_family: GPL
   license_file: LICENSE.txt
   summary: Source code formatter for cmake listfiles
@@ -62,3 +62,4 @@ about:
 extra:
   recipe-maintainers:
     - avrahamshukron
+    - xhochy
