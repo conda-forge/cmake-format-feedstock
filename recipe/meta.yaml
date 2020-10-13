@@ -1,4 +1,4 @@
-{% set name = "cmake-format" %}
+{% set name = "cmakelang" %}
 {% set version = "0.6.13" %}
 
 package:
@@ -7,39 +7,62 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 1a48b779067ecca68c498691d07d5c9d3df9803a7e0c5b641128fa6efe5ae489
+  sha256: 03982e87b00654d024d73ef972d9d9bb0e5726cdb6b8a424a15661fb6278e67f
 
 build:
   noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
-  entry_points:
-    - cmake-annotate = cmake_format.annotate:main
-    - cmake-format = cmake_format.__main__:main
-    - cmake-lint = cmake_lint.__main__:main
-    - cmake-genparsers = cmake_format.genparsers:main
-    - ctest-to = cmake_format.ctest_to:main
 
-requirements:
-  host:
-    - python
-    - pip
-  run:
-    - python
-    - six >=1.13.0
-    - pyyaml >=5.3
-    - jinja2 >=2.10.3
+outputs:
+  - name: cmakelang
+    script: {{ PYTHON }} -m pip install . -vv
+    build:
+      noarch: python
+    entry_points:
+      - cmake-annotate = cmake_format.annotate:main
+      - cmake-format = cmake_format.__main__:main
+      - cmake-genparsers = cmake_format.genparsers:main
+      - cmake-lint = cmake_lint.__main__:main
+      - ctest-to = cmake_format.ctest_to:main
+    requirements:
+      host:
+        - python
+        - pip
+      run:
+        - python
+        - six >=1.13.0
+        - pyyaml >=5.3
+        - jinja2 >=2.10.3
+    test:
+      imports:
+        - cmake_format
+        - cmake_lint
+      commands:
+        - cmake-format -h
+        - cmake-lint -h
+        - cmake-annotate -h
+        - cmake-genparsers -h
+        - ctest-to -h
 
-test:
-  imports:
-    - cmake_format
-    - cmake_lint
-  commands:
-    - cmake-format -h
-    - cmake-lint -h
-    - cmake-annotate -h
-    - cmake-genparsers -h
-    - ctest-to -h
+  - name: cmake-format
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - {{ pin_subpackage('cmakelang', max_pin="x.x.x") }}
+    test:
+      imports:
+        - cmake_format
+
+  - name: cmake_format
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - {{ pin_subpackage('cmakelang', max_pin="x.x.x") }}
+    test:
+      imports:
+        - cmake_format
 
 about:
   home: https://github.com/cheshirekow/cmake_format
