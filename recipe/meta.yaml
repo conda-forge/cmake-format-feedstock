@@ -13,17 +13,21 @@ build:
   noarch: python
   number: 0
 
+requirements:
+  host:
+    - python
+
 outputs:
   - name: cmakelang
     script: {{ PYTHON }} -m pip install . -vv
     build:
       noarch: python
-    entry_points:
-      - cmake-annotate = cmake_format.annotate:main
-      - cmake-format = cmake_format.__main__:main
-      - cmake-genparsers = cmake_format.genparsers:main
-      - cmake-lint = cmake_lint.__main__:main
-      - ctest-to = cmake_format.ctest_to:main
+      entry_points:
+        - cmake-annotate = cmake_format.annotate:main
+        - cmake-format = cmake_format.__main__:main
+        - cmake-genparsers = cmake_format.genparsers:main
+        - cmake-lint = cmake_lint.__main__:main
+        - ctest-to = cmake_format.ctest_to:main
     requirements:
       host:
         - python
