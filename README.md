@@ -5,9 +5,13 @@ Home: https://github.com/cheshirekow/cmake_format
 
 Package license: GPL-3.0-only
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cmake-format-feedstock/blob/master/LICENSE.txt)
 
 Summary: Source code formatter for cmake listfiles
+
+Development: https://github.com/cheshirekow/cmake_format
+
+Documentation: https://cmake-format.readthedocs.io/
 
 The cmake-format project provides Quality Assurance (QA) tools for cmake.
 * cmake-annotate can generate pretty HTML from your listfiles
