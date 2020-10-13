@@ -13,13 +13,9 @@ build:
   noarch: python
   number: 0
 
-requirements:
-  host:
-    - python
-
 outputs:
   - name: cmakelang
-    script: {{ PYTHON }} -m pip install . -vv
+    script: build_base.sh
     build:
       noarch: python
       entry_points:
