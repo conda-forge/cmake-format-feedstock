@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/cheshirekow/cmake_format/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: aa3d0e6156bcd4ae8fbd630ccb1d4995179b37b1b31923f2eb53764104da75f3
+  sha256: b67dd150380d9223036a12f82126a7a9b18e77db4a8d7240f993ee090884e4bf
 
 build:
   noarch: python
