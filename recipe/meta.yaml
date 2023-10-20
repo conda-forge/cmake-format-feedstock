@@ -12,28 +12,29 @@ source:
 build:
   noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  script:
+    - {{ PYTHON }} setup.py bdist_wheel
+    - {{ PYTHON }} -m pip install dist/*.whl
   entry_points:
-    - cmake-annotate = cmake_format.annotate:main
-    - cmake-format = cmake_format.__main__:main
-    - cmake-lint = cmake_lint.__main__:main
-    - cmake-genparsers = cmake_format.genparsers:main
-    - ctest-to = cmake_format.ctest_to:main
+    - cmake-annotate = cmakelang.annotate:main
+    - cmake-format = cmakelang.format.__main__:main
+    - cmake-lint = cmakelang.lint.__main__:main
+    - cmake-genparsers = cmakelang.genparsers:main
+    - ctest-to=cmakelang.ctest_to:main
 
 requirements:
   host:
-    - python
+    - python >=3.6
     - pip
   run:
-    - python
+    - python >=3.6
     - six >=1.13.0
     - pyyaml >=5.3
     - jinja2 >=2.10.3
 
 test:
   imports:
-    - cmake_format
-    - cmake_lint
+    - cmakelang
   commands:
     - cmake-format -h
     - cmake-lint -h
