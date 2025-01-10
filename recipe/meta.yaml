@@ -11,7 +11,7 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script:
     - {{ PYTHON }} setup.py bdist_wheel
     - {{ PYTHON }} -m pip install dist/*.whl
@@ -24,15 +24,17 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - six >=1.13.0
     - pyyaml >=5.3
     - jinja2 >=2.10.3
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - cmakelang
   commands:
